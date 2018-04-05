@@ -48,21 +48,21 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href='<%= Page.ResolveUrl("~/Default.aspx") %>'><i class="menu-icon fa fa-dashboard fa-2x"></i>Dashboard </a>
+                        <a href='<%= Page.ResolveUrl("~/Default.aspx") %>'><i class="menu-icon fa fa-dashboard fa-lg"></i>Dashboard </a>
                     </li>
                     <h3 class="menu-title">Coaching</h3>
                     <!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-users fa-2x"></i>Clients</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-users fa-lg"></i>Clients</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-plus fa-2x"></i><a href='<%= Page.ResolveUrl("~/Users/Add.aspx") %>'>Add Clients</a></li>
-                            <li><i class="fa fa-list fa-2x"></i><a href='<%= Page.ResolveUrl("~/Users/View.aspx") %>'>View Clients</a></li>
+                            <li><i class="fa fa-plus fa-lg"></i><a href='<%= Page.ResolveUrl("~/Users/Add.aspx") %>'>Add Clients</a></li>
+                            <li><i class="fa fa-list fa-lg"></i><a href='<%= Page.ResolveUrl("~/Users/View.aspx") %>'>View Clients</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-heartbeat fa-2x"></i>Coaching</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-heartbeat fa-lg"></i>Coaching</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-plus fa-2x"></i><a href='<%= Page.ResolveUrl("~/Coaching/Add.aspx") %>'>Add Coaching</a></li>
+                            <li><i class="fa fa-plus fa-lg"></i><a href='<%= Page.ResolveUrl("~/Coaching/Add.aspx") %>'>Add Coaching</a></li>
                         </ul>
                     </li>
                 </ul>

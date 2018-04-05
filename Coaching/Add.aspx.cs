@@ -174,7 +174,8 @@ public partial class Coaching_Add : System.Web.UI.Page
             cmd.Parameters.AddWithValue("@dadd", txtCurrentDate.Text);
             cmd.ExecuteNonQuery();
 
-            GetCoachingHist();        }
+            GetCoachingHist();
+        }
     }
 
     private void GetCoachingHist()
