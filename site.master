@@ -115,8 +115,11 @@
         </div>
     </div>
 
-    <script src='<%= Page.ResolveUrl("~/assets/js/vendor/jquery-2.1.4.min.js") %>'></script>
+    <script type='text/javascript' src='<%= Page.ResolveUrl("~/js/newjs/jquery.min.js") %>'></script>
+    <script type='text/javascript' src='<%= Page.ResolveUrl("~/js/newjs/jquery-ui.min.js") %>'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" 
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src='<%= Page.ResolveUrl("~/assets/js/plugins.js") %>'></script>
     <script src='<%= Page.ResolveUrl("~/assets/js/main.js") %>'></script>
     <script src='<%= Page.ResolveUrl("~/assets/js/lib/chart-js/Chart.bundle.js") %>'></script>

@@ -5,6 +5,8 @@
     
     <script type='text/javascript' src='<%= Page.ResolveUrl("~/js/newjs/jquery.min.js") %>'></script>
     <script type='text/javascript' src='<%= Page.ResolveUrl("~/js/newjs/jquery-ui.min.js") %>'></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" 
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -84,8 +86,8 @@
                                         <ItemTemplate>
                                             <tr>
                                                 <td>
-                                                    <a href='<%# string.Concat("../clientprogress/", Eval("ProgressPic")) %>' data-lightbox="image-1">
-                                                        <img id="Img1" runat="server" src='<%# string.Concat("~/clientprogress/", Eval("ProgressPic")) %>'
+                                                    <a href='<%# string.Concat("../clientprogress/", Eval("ProgressPicFront")) %>' data-lightbox="image-1">
+                                                        <img id="Img1" runat="server" src='<%# string.Concat("~/clientprogress/", Eval("ProgressPicFront")) %>'
                                                              class="img-responsive" width="200" />
                                                     </a>
                                                 </td>
@@ -115,7 +117,7 @@
                         </div>
                         <div class="card-footer">
                             <center>
-                                <asp:DataPager id="dpCoachHist" runat="server" pageSize="5" PagedControlID="lvCoaching">
+                                <asp:DataPager id="dpCoachHist" runat="server" pageSize="3" PagedControlID="lvCoaching">
                                     <Fields>
                                         <asp:NumericPagerField Buttontype="Button"
                                                                NumericButtonCssClass="btn btn-default"
@@ -234,10 +236,26 @@
                             <div class="col-lg-6">
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="file-input" class="form-control-label">Progress Photo</label>
+                                        <label for="file-input" class="form-control-label">Front Photo</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <asp:FileUpload ID="usrPicUpload" runat="server" class="file" />
+                                        <asp:FileUpload ID="fileFront" runat="server" class="form-control-file" />
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="file-input" class="form-control-label">Side Photo</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <asp:FileUpload ID="fileSide" runat="server" class="form-control-file" />
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="file-input" class="form-control-label">Back Photo</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <asp:FileUpload ID="fileBack" runat="server" class="form-control-file" />
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -256,7 +274,7 @@
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <asp:TextBox ID="txtWeight" class="form-control" 
-                                                     Placeholder="Weigh (in kg)" 
+                                                     Placeholder="Weight (in kg)" 
                                                      TextMode="Number" runat="server" />
                                     </div>
                                 </div>
@@ -355,8 +373,9 @@
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <asp:DropDownList ID="ddlPackage" class="form-control" runat="server">
-                                            <asp:ListItem>Single Session</asp:ListItem>
-                                            <asp:ListItem>Monthly Session</asp:ListItem>
+                                            <asp:ListItem>12 Session</asp:ListItem>
+                                            <asp:ListItem>24 Session</asp:ListItem>
+                                            <asp:ListItem>30 Session</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -444,6 +463,234 @@
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>
+        <div id="coachingDetails" class="modal fade">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="pull-left">
+                            <h4 class="modal-title">Coaching Details</h4>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <div class="card-body">
+                                <div class="col-lg-6">
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class="form-control-label">Front Photo</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <div class="thumbnail" id="idFront">
+                                                <asp:HyperLink ID="lnkFront" runat="server" data-lightbox="lbDB">
+                                                    <asp:Image ID="imgFront" class="img-responsive" Width="200" runat="server" />
+                                                </asp:HyperLink>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class="form-control-label">Side Photo</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <div class="thumbnail" id="idSide">
+                                                <asp:HyperLink ID="lnkSide" runat="server" data-lightbox="lbDB">
+                                                    <asp:Image ID="imgSide" class="img-responsive" Width="200" runat="server" />
+                                                </asp:HyperLink>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class="form-control-label">Back Photo</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <div class="thumbnail" id="idBack">
+                                                <asp:HyperLink ID="lnkBack" runat="server" data-lightbox="lbDB">
+                                                    <asp:Image ID="imgBack" class="img-responsive" Width="200" runat="server" />
+                                                </asp:HyperLink>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class="form-control-label">Age</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <asp:TextBox ID="txtAge2" class="form-control" 
+                                                         runat="server" disabled />
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class="form-control-label">Weight</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <asp:TextBox ID="txtWght2" class="form-control" 
+                                                         runat="server" disabled />
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class="form-control-label">Height</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <asp:TextBox ID="txtHght2" class="form-control" 
+                                                         runat="server" disabled />
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class="form-control-label">Arms</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <asp:TextBox ID="txtArms2" class="form-control" 
+                                                         runat="server" disabled />
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class="form-control-label">Chest</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <asp:TextBox ID="txtChst2" class="form-control" 
+                                                         runat="server" disabled />
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class="form-control-label">Waist</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <asp:TextBox ID="txtWst2" class="form-control" 
+                                                         runat="server" disabled />
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class="form-control-label">Hip</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <asp:TextBox ID="txtHip2" class="form-control" 
+                                                         runat="server" disabled />
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class="form-control-label">Thigh</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <asp:TextBox ID="txtThgh2" class="form-control" 
+                                                         runat="server" disabled />
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class="form-control-label">Legs</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <asp:TextBox ID="txtLgs2" class="form-control" 
+                                                         runat="server" disabled />
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class="form-control-label">Fitness Goal</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <asp:TextBox ID="txtGoal" class="form-control" runat="server" disabled />
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class="form-control-label">Coaching Package</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <asp:TextBox ID="txtPackage" class="form-control" runat="server" disabled />
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class="form-control-label">Coaching Fee</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <asp:TextBox ID="txtCoachFee2" class="form-control"
+                                                disabled runat="server" />
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class="form-control-label">Time of Record</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <asp:TextBox ID="txtTOR" class="form-control" runat="server"
+                                                disabled />
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-6">
+                                            <b><label class="form-control-label">Training Schedule</label></b>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class="form-control-label">Mon</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <asp:CheckBox ID="chkMon2" runat="server" />
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class="form-control-label">Tue</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <asp:CheckBox ID="chkTue2" runat="server" />
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class="form-control-label">Wed</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <asp:CheckBox ID="chkWed2" runat="server" />
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class="form-control-label">Thur</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <asp:CheckBox ID="chkThu2" runat="server" />
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class="form-control-label">Fri</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <asp:CheckBox ID="chkFri2" runat="server" />
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class="form-control-label">Sat</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <asp:CheckBox ID="chkSat2" runat="server" />
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                </div>
+            </div>
+        </div>
     </form>
 </asp:Content>
 

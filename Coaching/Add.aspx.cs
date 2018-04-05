@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Web.Services;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 public partial class Coaching_Add : System.Web.UI.Page
@@ -109,23 +110,48 @@ public partial class Coaching_Add : System.Web.UI.Page
             int trainID = (int)cmd.ExecuteScalar();
 
             cmd.CommandText = @"INSERT INTO TrainingDetails
-                              (TrainingID, ProgressPic, Age, Height, Weight, Arms, Chest, Waist,
+                              (TrainingID, ProgressPicFront, ProgressPicSide, ProgressPicBack, 
+                                Age, Height, Weight, Arms, Chest, Waist,
                                Hip, Thigh, Legs, Monday, Tuesday, Wednesday,
                                Thursday, Friday, Saturday, DateAdded) VALUES
-                              (@tid, @progpic, @age, @hght, @wght, @arms, @chst, @wst, @hip,
+                              (@tid, @progfrnt, @progside, @progback, @age, @hght, @wght, @arms, @chst, @wst, @hip,
                                @thgh, @lgs, @mon, @tue, @wed, @thu, @fri, @sat, @dadd)";
             cmd.Parameters.AddWithValue("@tid", trainID);
 
-            if (!usrPicUpload.HasFile)
+            if (!fileFront.HasFile)
             {
-                cmd.Parameters.AddWithValue("@progpic", "placeholder.jpg");
+                cmd.Parameters.AddWithValue("@progfrnt", "front.jpg");
             }
             else
             {
-                string fileExt = Path.GetExtension(usrPicUpload.FileName);
+                string fileExt = Path.GetExtension(fileFront.FileName);
                 string id = Guid.NewGuid().ToString();
-                cmd.Parameters.AddWithValue("@progpic", id + fileExt);
-                usrPicUpload.SaveAs(Server.MapPath("~/clientprogress/" + id + fileExt));
+                cmd.Parameters.AddWithValue("@progfrnt", id + fileExt);
+                fileFront.SaveAs(Server.MapPath("~/clientprogress/" + id + fileExt));
+            }
+
+            if (!fileSide.HasFile)
+            {
+                cmd.Parameters.AddWithValue("@progside", "side.jpg");
+            }
+            else
+            {
+                string fileExt = Path.GetExtension(fileSide.FileName);
+                string id = Guid.NewGuid().ToString();
+                cmd.Parameters.AddWithValue("@progside", id + fileExt);
+                fileSide.SaveAs(Server.MapPath("~/clientprogress/" + id + fileExt));
+            }
+
+            if (!fileBack.HasFile)
+            {
+                cmd.Parameters.AddWithValue("@progback", "back.jpg");
+            }
+            else
+            {
+                string fileExt = Path.GetExtension(fileBack.FileName);
+                string id = Guid.NewGuid().ToString();
+                cmd.Parameters.AddWithValue("@progback", id + fileExt);
+                fileBack.SaveAs(Server.MapPath("~/clientprogress/" + id + fileExt));
             }
 
             cmd.Parameters.AddWithValue("@age", txtAge.Text);
@@ -158,7 +184,7 @@ public partial class Coaching_Add : System.Web.UI.Page
         {
             con.Open();
             cmd.Connection = con;
-            cmd.CommandText = @"SELECT ProgressPic, Training.TrainingID, GoalSetting, TrainingPackage,
+            cmd.CommandText = @"SELECT ProgressPicFront, Training.TrainingID, GoalSetting, TrainingPackage,
                                 Weight, TrainingDetails.DateAdded
                                 FROM Training
                                 INNER JOIN TrainingDetails
@@ -187,6 +213,67 @@ public partial class Coaching_Add : System.Web.UI.Page
 
     protected void lvCoaching_OnItemCommand(object sender, ListViewCommandEventArgs e)
     {
-        throw new NotImplementedException();
+        Literal ltTrainID = (Literal)e.Item.FindControl("ltTrainID");
+
+        using (var con = new SqlConnection(Helper.GetCon()))
+        using (var cmd = new SqlCommand())
+        {
+            con.Open();
+            cmd.Connection = con;
+            cmd.CommandText = @"SELECT ProgressPicFront, ProgressPicSide, ProgressPicBack,
+                                Age, Weight, Height, Arms,
+                                Chest, Waist, Hip, Thigh, Legs, GoalSetting,
+                                TrainingPackage, TrainingFee, TrainingDetails.DateAdded,        
+                                Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+                                FROM Training
+                                INNER JOIN TrainingDetails
+                                ON Training.TrainingID = TrainingDetails.TrainingID
+                                WHERE Training.TrainingID = @id";
+            cmd.Parameters.AddWithValue("@id", ltTrainID.Text);
+            using (var dr = cmd.ExecuteReader())
+            {
+                if (dr.HasRows)
+                {
+                    if (dr.Read())
+                    {
+                        imgFront.ImageUrl = "~/clientprogress/" + dr["ProgressPicFront"];
+                        lnkFront.NavigateUrl = "~/clientprogress/" + dr["ProgressPicFront"];
+
+                        imgSide.ImageUrl = "~/clientprogress/" + dr["ProgressPicSide"];
+                        lnkSide.NavigateUrl = "~/clientprogress/" + dr["ProgressPicSide"];
+
+                        imgBack.ImageUrl = "~/clientprogress/" + dr["ProgressPicBack"];
+                        lnkBack.NavigateUrl = "~/clientprogress/" + dr["ProgressPicBack"];
+
+                        txtAge2.Text = dr["Age"].ToString();
+                        txtWght2.Text = dr["Weight"].ToString();
+                        txtHght2.Text = dr["Height"].ToString();
+                        txtArms2.Text = dr["Arms"].ToString();
+                        txtChst2.Text = dr["Chest"].ToString();
+                        txtWst2.Text = dr["Waist"].ToString();
+                        txtHip2.Text = dr["Hip"].ToString();
+                        txtThgh2.Text = dr["Thigh"].ToString();
+                        txtLgs2.Text = dr["Legs"].ToString();
+                        txtGoal.Text = dr["GoalSetting"].ToString();
+                        txtPackage.Text = dr["TrainingPackage"].ToString();
+                        txtCoachFee2.Text = decimal.Parse(dr["TrainingFee"].ToString()).ToString("c");
+
+                        DateTime dAdded = DateTime.Parse(dr["DateAdded"].ToString());
+                        txtTOR.Text = dAdded.ToString("MMMM dd, yyyy");
+
+                        chkMon2.Checked = dr["Monday"].ToString() == "1" ? true : false;
+                        chkTue2.Checked = dr["Tuesday"].ToString() == "1" ? true : false;
+                        chkWed2.Checked = dr["Wednesday"].ToString() == "1" ? true : false;
+                        chkThu2.Checked = dr["Thursday"].ToString() == "1" ? true : false;
+                        chkFri2.Checked = dr["Friday"].ToString() == "1" ? true : false;
+                        chkSat2.Checked = dr["Saturday"].ToString() == "1" ? true : false;
+                    }
+                }
+            }
+        }
+
+
+        ScriptManager.RegisterStartupScript(Page, Page.GetType(), 
+            "coachingDetails", "$('#coachingDetails').modal();", true);
     }
 }
