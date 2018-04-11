@@ -92,7 +92,10 @@
                 <h4 class="mb-0">
                     <span class="count">10468</span>
                 </h4>
-                <h2><i class="fa fa-list"></i> Coachings</h2>
+
+                <a href='<%= Page.ResolveUrl("~/Workout/AddWorkout.aspx") %>' style="color: white">
+                    <h2><i class="fa fa-plus"></i> Add Workouts</h2>
+                </a>
 
                 <div class="chart-wrapper px-3" style="height: 70px;" height="70">
                     <canvas id="widgetChart4"></canvas>
