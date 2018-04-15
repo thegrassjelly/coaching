@@ -79,51 +79,53 @@
                             Coaching Record
                         </div>
                         <div class="card-body">
-                            <table class="table table-striped table-hover">
-                                <thead>
-                                    <th></th>
-                                    <th>Date of Record</th>
-                                    <th>Fitness Goal</th>
-                                    <th>Coaching Package</th>
-                                    <th>Weight</th>
-                                    <th></th>
-                                </thead>
-                                <tbody>
-                                    <asp:ListView ID="lvCoaching" runat="server"
-                                        OnPagePropertiesChanging="lvCoaching_OnPagePropertiesChanging"
-                                        OnDataBound="lvCoaching_OnDataBound"
-                                        OnItemCommand="lvCoaching_OnItemCommand">
-                                        <ItemTemplate>
-                                            <tr>
-                                                <td>
-                                                    <a href='<%# string.Concat("../clientprogress/", Eval("ProgressPicFront")) %>' data-lightbox="image-1">
-                                                        <img id="Img1" runat="server" src='<%# string.Concat("~/clientprogress/", Eval("ProgressPicFront")) %>'
-                                                            class="img-responsive" width="200" />
-                                                    </a>
-                                                </td>
-                                                <td><%# Eval("DateAdded", "{0: MMMM d, yyyy}") %></td>
-                                                <asp:Literal ID="ltTrainID" runat="server" Text='<%# Eval("TrainingID") %>' Visible="false" />
-                                                <td><span class="label label-primary"><%# Eval("GoalSetting") %></span></td>
-                                                <td><%# Eval("TrainingPackage") %></td>
-                                                <td><%# Eval("Weight") %> kg</td>
-                                                <td>
-                                                    <asp:Button ID="btnCoachingInfo" CommandName="coachingDetails"
-                                                        class="btn btn-sm btn-primary" runat="server" Text='View Coaching Details'
-                                                        OnSubmitBehavior="false"
-                                                        formnovalidate />
-                                                </td>
-                                            </tr>
-                                        </ItemTemplate>
-                                        <EmptyDataTemplate>
-                                            <tr>
-                                                <td colspan="12">
-                                                    <h2 class="text-center">No records found.</h2>
-                                                </td>
-                                            </tr>
-                                        </EmptyDataTemplate>
-                                    </asp:ListView>
-                                </tbody>
-                            </table>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                        <th></th>
+                                        <th>Date of Record</th>
+                                        <th>Fitness Goal</th>
+                                        <th>Coaching Package</th>
+                                        <th>Weight</th>
+                                        <th></th>
+                                    </thead>
+                                    <tbody>
+                                        <asp:ListView ID="lvCoaching" runat="server"
+                                            OnPagePropertiesChanging="lvCoaching_OnPagePropertiesChanging"
+                                            OnDataBound="lvCoaching_OnDataBound"
+                                            OnItemCommand="lvCoaching_OnItemCommand">
+                                            <ItemTemplate>
+                                                <tr>
+                                                    <td>
+                                                        <a href='<%# string.Concat("../clientprogress/", Eval("ProgressPicFront")) %>' data-lightbox="image-1">
+                                                            <img id="Img1" runat="server" src='<%# string.Concat("~/clientprogress/", Eval("ProgressPicFront")) %>'
+                                                                class="img-responsive" width="200" />
+                                                        </a>
+                                                    </td>
+                                                    <td><%# Eval("DateAdded", "{0: MMMM d, yyyy}") %></td>
+                                                    <asp:Literal ID="ltTrainID" runat="server" Text='<%# Eval("TrainingID") %>' Visible="false" />
+                                                    <td><span class="label label-primary"><%# Eval("GoalSetting") %></span></td>
+                                                    <td><%# Eval("TrainingPackage") %></td>
+                                                    <td><%# Eval("Weight") %> kg</td>
+                                                    <td>
+                                                        <asp:Button ID="btnCoachingInfo" CommandName="coachingDetails"
+                                                            class="btn btn-sm btn-primary" runat="server" Text='View Coaching Details'
+                                                            OnSubmitBehavior="false"
+                                                            formnovalidate />
+                                                    </td>
+                                                </tr>
+                                            </ItemTemplate>
+                                            <EmptyDataTemplate>
+                                                <tr>
+                                                    <td colspan="12">
+                                                        <h2 class="text-center">No records found.</h2>
+                                                    </td>
+                                                </tr>
+                                            </EmptyDataTemplate>
+                                        </asp:ListView>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div class="card-footer">
                             <center>

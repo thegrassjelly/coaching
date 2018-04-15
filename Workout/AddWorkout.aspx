@@ -357,7 +357,7 @@
                                                     <asp:Literal ID="ltWorkID" runat="server" Text='<%# Eval("WorkoutDetailsID") %>' Visible="false" />
                                                     <td><%# Eval("Repetitions") %></td>
                                                     <td><%# Eval("WorkoutName") %></td>
-                                                    <td><%# Eval("Weight") %> Kg</td>
+                                                    <td><%# Eval("Weight") %> kg</td>
                                                     <td><%# Eval("Sets") %></td>
                                                     <td><%# Eval("DateAdded", "{0: MMMM d, yyyy}") %></td>
                                                     <td>
@@ -453,7 +453,7 @@
                                                                 <tr>
                                                                     <td><%# Eval("BodyPart") %></td>
                                                                     <td><%# Eval("WorkoutName") %></td>
-                                                                    <td><%# Eval("Weight") %> Kg</td>
+                                                                    <td><%# Eval("Weight") %> kg</td>
                                                                     <td><%# Eval("Repetitions") %></td>
                                                                     <td><%# Eval("Sets") %></td>
                                                                     <td><%# Eval("DateAdded", "{0: MMMM d, yyyy}") %></td>

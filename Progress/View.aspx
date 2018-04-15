@@ -61,7 +61,7 @@
                                                     <td><%# Eval("LastName") %>, <%# Eval("FirstName") %> </td>
                                                     <td><%# Eval("GoalSetting") %></td>
                                                     <td><%# Eval("Age") %> Yrs. Old</td>
-                                                    <td><%# Eval("Weight") %> Kg</td>
+                                                    <td><%# Eval("Weight") %> kg</td>
                                                     <td><%# Eval("DateAdded", "{0: dddd, MMMM d, yyyy}") %></td>
                                                 </tr>
                                             </ItemTemplate>
