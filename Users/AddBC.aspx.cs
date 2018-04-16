@@ -41,10 +41,12 @@ public partial class Users_AddBC : System.Web.UI.Page
                         name.Add(myString);
                     }
                 }
+
                 conn.Close();
             }
 
         }
+
         return name;
     }
 
@@ -146,6 +148,8 @@ public partial class Users_AddBC : System.Web.UI.Page
                 cmd.Parameters.AddWithValue("@dadded", Helper.PHTime());
                 cmd.ExecuteNonQuery();
             }
+
+            GetBodyComp();
         }
         else
         {
@@ -166,46 +170,59 @@ public partial class Users_AddBC : System.Web.UI.Page
 
     protected void lvBodyComp_OnItemCommand(object sender, ListViewCommandEventArgs e)
     {
-        Literal ltBCID = (Literal)e.Item.FindControl("ltBCID");
+        Literal ltBCID = (Literal) e.Item.FindControl("ltBCID");
 
         using (var con = new SqlConnection(Helper.GetCon()))
         using (var cmd = new SqlCommand())
         {
             con.Open();
             cmd.Connection = con;
-            cmd.CommandText = @"SELECT BodyType, Gender, Age, Height, Weight, ClothesWeight,
+
+            if (e.CommandName == "details")
+            {
+                cmd.CommandText = @"SELECT BodyType, Gender, Age, Height, Weight, ClothesWeight,
                                 FatPer, FatMass, FFM, MuscleMass, TBW, TBWPer, BoneMass,
                                 BMR, MetAge, VFR, BMI FROM BodyComp WHERE BCID = @id";
-            cmd.Parameters.AddWithValue("@id", ltBCID.Text);
-            using (var dr = cmd.ExecuteReader())
-            {
-                if (dr.HasRows)
+                cmd.Parameters.AddWithValue("@id", ltBCID.Text);
+                using (var dr = cmd.ExecuteReader())
                 {
-                    if (dr.Read())
+                    if (dr.HasRows)
                     {
-                        txtBType2.Text = dr["BodyType"].ToString();
-                        txtGender2.Text = dr["Gender"].ToString();
-                        txtAge2.Text = dr["Age"].ToString();
-                        txtHght2.Text = dr["Height"].ToString();
-                        txtWght2.Text = dr["Weight"].ToString();
-                        txtCWght2.Text = dr["ClothesWeight"].ToString();
-                        txtFatPer2.Text = dr["FatPer"].ToString();
-                        txtFatMass2.Text = dr["FatMass"].ToString();
-                        txtFFM2.Text = dr["FFM"].ToString();
-                        txtMMass2.Text = dr["MuscleMass"].ToString();
-                        txtTBW2.Text = dr["TBW"].ToString();
-                        txtTBWPer2.Text = dr["TBWPer"].ToString();
-                        txtBMass2.Text = dr["BoneMass"].ToString();
-                        txtBMR2.Text = dr["BMR"].ToString();
-                        txtMAge2.Text = dr["MetAge"].ToString();
-                        txtVFR2.Text = dr["VFR"].ToString();
-                        txtBMI2.Text = dr["BMI"].ToString();
+                        if (dr.Read())
+                        {
+                            txtBType2.Text = dr["BodyType"].ToString();
+                            txtGender2.Text = dr["Gender"].ToString();
+                            txtAge2.Text = dr["Age"].ToString();
+                            txtHght2.Text = dr["Height"].ToString();
+                            txtWght2.Text = dr["Weight"].ToString();
+                            txtCWght2.Text = dr["ClothesWeight"].ToString();
+                            txtFatPer2.Text = dr["FatPer"].ToString();
+                            txtFatMass2.Text = dr["FatMass"].ToString();
+                            txtFFM2.Text = dr["FFM"].ToString();
+                            txtMMass2.Text = dr["MuscleMass"].ToString();
+                            txtTBW2.Text = dr["TBW"].ToString();
+                            txtTBWPer2.Text = dr["TBWPer"].ToString();
+                            txtBMass2.Text = dr["BoneMass"].ToString();
+                            txtBMR2.Text = dr["BMR"].ToString();
+                            txtMAge2.Text = dr["MetAge"].ToString();
+                            txtVFR2.Text = dr["VFR"].ToString();
+                            txtBMI2.Text = dr["BMI"].ToString();
+                        }
                     }
                 }
-            }
-        }
 
-        ScriptManager.RegisterStartupScript(Page, Page.GetType(),
-            "details", "$('#details').modal();", true);
+                ScriptManager.RegisterStartupScript(Page, Page.GetType(),
+                    "details", "$('#details').modal();", true);
+            }
+            else if (e.CommandName == "delitem")
+            {
+                cmd.CommandText = @"DELETE FROM BodyComp WHERE BCID = @id";
+                cmd.Parameters.AddWithValue("@id", ltBCID.Text);
+                cmd.ExecuteNonQuery();
+
+                GetBodyComp();
+            }
+
+        }
     }
 }

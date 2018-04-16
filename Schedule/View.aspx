@@ -14,19 +14,6 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="card-body">
-                    <dxwschs:ASPxDateNavigator ID="ASPxDateNavigator1" runat="server" ClientIDMode="AutoID" MasterControlID="schScheduler">
-                        <Properties Columns="5">
-                        </Properties>
-                    </dxwschs:ASPxDateNavigator>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-12 col-xs-12">
-            <div class="card">
-                <div class="card-header">
-                    <div class="clearfix"></div>
-                </div>
-                <div class="card-body">
                     <dxwschs:ASPxScheduler ID="schScheduler" runat="server" Theme="MetropolisBlue"
                         AppointmentDataSourceID="SqlDataSource1" ClientIDMode="AutoID"
                         ActiveViewType="FullWeek" DataMember="" DataSourceID="SqlDataSource1" Start="2018-04-16" ResourceDataSourceID="SqlDataSource1">

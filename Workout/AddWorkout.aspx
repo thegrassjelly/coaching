@@ -251,6 +251,10 @@
                     <div class="card">
                         <div class="card-header">
                             Workout Details
+                            <div class="pull-right">
+                                <asp:Button ID="btnBack" class="btn btn-success" runat="server" Text="Back" OnClick="btnBack_OnClick" formnovalidate />
+                                <asp:Button ID="btnAdd" class="btn btn-primary" runat="server" Text="Add" OnClick="btnAdd_OnClick" />
+                            </div>
                         </div>
                         <div class="card-body">
                             <div id="pnlClient" runat="server" visible="false">
@@ -315,12 +319,6 @@
                                             TextMode="Number" runat="server" />
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="pull-right">
-                                <asp:Button ID="btnBack" class="btn btn-success" runat="server" Text="Back" OnClick="btnBack_OnClick" formnovalidate />
-                                <asp:Button ID="btnAdd" class="btn btn-primary" runat="server" Text="Add" OnClick="btnAdd_OnClick" />
                             </div>
                         </div>
                     </div>

@@ -245,6 +245,10 @@
                     <div class="card">
                         <div class="card-header">
                             Coaching Details
+                            <div class="pull-right">
+                                <asp:Button ID="btnBack" class="btn btn-success" runat="server" Text="Back" OnClick="btnBack_OnClick" formnovalidate />
+                                <asp:Button ID="btnSubmit" class="btn btn-primary" runat="server" Text="Add" OnClick="btnSubmit_OnClick" />
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="col-lg-6">
@@ -465,12 +469,6 @@
                                         <asp:CheckBox ID="chkSat" runat="server" />
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="pull-right">
-                                <asp:Button ID="btnBack" class="btn btn-success" runat="server" Text="Back" OnClick="btnBack_OnClick" formnovalidate />
-                                <asp:Button ID="btnSubmit" class="btn btn-primary" runat="server" Text="Add" OnClick="btnSubmit_OnClick" />
                             </div>
                         </div>
                     </div>
