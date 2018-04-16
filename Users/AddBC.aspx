@@ -100,9 +100,9 @@
                                                             formnovalidate />
                                                     </td>
                                                     <td>
-                                                        <asp:Button ID="Button1" CommandName="delitem"
+                                                        <asp:Button ID="btnDelRecord" CommandName="delitem"
                                                                     class="btn btn-sm btn-danger" runat="server" Text='Delete Record'
-                                                                    OnSubmitBehavior="false"
+                                                                    OnSubmitBehavior="false" OnClientClick='return confirm("Are you sure?");'
                                                                     formnovalidate />
                                                     </td>
                                                 </tr>
