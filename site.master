@@ -64,7 +64,8 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-calendar fa-lg"></i>Scheduling</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-list fa-lg"></i><a href='<%= Page.ResolveUrl("~/Schedule/View.aspx") %>'>Training Schedule</a></li>
-                        </ul>
+                            <li><i class="fa fa-list fa-lg"></i><a href='<%= Page.ResolveUrl("~/Schedule/Add.aspx") %>'>Add Schedule</a></li>
+                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-camera fa-lg"></i>Client Progress</a>

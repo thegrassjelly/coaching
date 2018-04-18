@@ -157,6 +157,30 @@
         </div>
     </div>
     <!--/.col-->
+    
+    <div class="col-sm-6 col-lg-3">
+        <div class="card text-white bg-flat-color-5">
+            <div class="card-body pb-0">
+                <div class="dropdown float-right">
+                    <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+                        <i class="fa fa-cog"></i>
+                    </button>
+                </div>
+                <h4 class="mb-0">
+                    <span class="count">10468</span>
+                </h4>
+
+                <a href='<%= Page.ResolveUrl("~/Schedule/Add.aspx") %>' style="color: white">
+                    <h2><i class="fa fa-plus"></i> Add Schedule</h2>
+                </a>
+
+            </div>
+
+            <div class="chart-wrapper px-0" style="height: 70px;" height="70">
+                <canvas id="widgetChart"></canvas>
+            </div>
+        </div>
+    </div>
 
     <div class="col-sm-6 col-lg-3">
         <div class="card text-white bg-flat-color-5">

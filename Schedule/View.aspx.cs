@@ -14,6 +14,7 @@ public partial class Schedule_View : System.Web.UI.Page
         if (!IsPostBack)
         {
             schScheduler.OptionsCustomization.AllowAppointmentDrag = UsedAppointmentType.None;
+            schScheduler.OptionsBehavior.ClientTimeZoneId = "Singapore Standard Time";
         }
     }
 }
