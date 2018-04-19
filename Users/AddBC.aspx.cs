@@ -144,7 +144,7 @@ public partial class Users_AddBC : System.Web.UI.Page
                 cmd.Parameters.AddWithValue("@bmr", txtBMR.Text);
                 cmd.Parameters.AddWithValue("@mage", txtMAge.Text);
                 cmd.Parameters.AddWithValue("@vfr", txtVFR.Text);
-                cmd.Parameters.AddWithValue("@bmi", txtBType.Text);
+                cmd.Parameters.AddWithValue("@bmi", txtBMI.Text);
                 cmd.Parameters.AddWithValue("@dadded", Helper.PHTime());
                 cmd.ExecuteNonQuery();
             }

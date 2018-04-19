@@ -417,7 +417,7 @@
                                     <label class="form-control-label">BMI</label>
                                 </div>
                                 <div class="col-12 col-md-9">
-                                    <asp:TextBox ID="TextBox4" class="form-control"
+                                    <asp:TextBox ID="txtBMI" class="form-control"
                                                  Placeholder="Body Mass Index"
                                                  TextMode="Number" runat="server"  />
                                 </div>
@@ -440,56 +440,56 @@
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <div class="card-body">
-                        <div class="col-lg-6">
-                            <div class="row form-group">
-                                <div class="col col-md-3">
-                                    <label class="form-control-label">Body Type</label>
-                                </div>
-                                <div class="col-12 col-md-9">
-                                    <asp:TextBox ID="txtBType2" class="form-control" runat="server" disabled />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col col-md-3">
-                                    <label class="form-control-label">Gender</label>
-                                </div>
-                                <div class="col-12 col-md-9">
-                                    <asp:TextBox ID="txtGender2" class="form-control" runat="server" disabled />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col col-md-3">
-                                    <label class="form-control-label">Age</label>
-                                </div>
-                                <div class="col-12 col-md-9">
-                                    <asp:TextBox ID="txtAge2" class="form-control" runat="server" disabled />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col col-md-3">
-                                    <label class="form-control-label">Height (cm)</label>
-                                </div>
-                                <div class="col-12 col-md-9">
-                                    <asp:TextBox ID="txtHght2" class="form-control" runat="server" disabled />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col col-md-3">
-                                    <label class="form-control-label">Weight (kg)</label>
-                                </div>
-                                <div class="col-12 col-md-9">
-                                    <asp:TextBox ID="txtWght2" class="form-control" runat="server" disabled />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col col-md-3">
-                                    <label class="form-control-label">Clothes Weight (kg)</label>
-                                </div>
-                                <div class="col-12 col-md-9">
-                                    <asp:TextBox ID="txtCWght2" class="form-control" runat="server" disabled />
-                                </div>
-                            </div>
-                        </div>
+                                    <div class="col-lg-6">
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class="form-control-label">Body Type</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <asp:TextBox ID="txtBType2" class="form-control" runat="server" disabled />
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class="form-control-label">Gender</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <asp:TextBox ID="txtGender2" class="form-control" runat="server" disabled />
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class="form-control-label">Age</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <asp:TextBox ID="txtAge2" class="form-control" runat="server" disabled />
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class="form-control-label">Height (cm)</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <asp:TextBox ID="txtHght2" class="form-control" runat="server" disabled />
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class="form-control-label">Weight (kg)</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <asp:TextBox ID="txtWght2" class="form-control" runat="server" disabled />
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class="form-control-label">Clothes Weight (kg)</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <asp:TextBox ID="txtCWght2" class="form-control" runat="server" disabled />
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col-lg-6">
                                         <div class="row form-group">
                                             <div class="col col-md-3">
