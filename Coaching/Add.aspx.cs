@@ -221,7 +221,10 @@ public partial class Coaching_Add : System.Web.UI.Page
         {
             con.Open();
             cmd.Connection = con;
-            cmd.CommandText = @"SELECT ProgressPicFront, ProgressPicSide, ProgressPicBack,
+
+            if (e.CommandName == "coachingDetails")
+            {
+                cmd.CommandText = @"SELECT ProgressPicFront, ProgressPicSide, ProgressPicBack,
                                 Age, Weight, Height, Arms,
                                 Chest, Waist, Hip, Thigh, Legs, GoalSetting,
                                 TrainingPackage, TrainingFee, TrainingDetails.DateAdded,        
@@ -230,51 +233,61 @@ public partial class Coaching_Add : System.Web.UI.Page
                                 INNER JOIN TrainingDetails
                                 ON Training.TrainingID = TrainingDetails.TrainingID
                                 WHERE Training.TrainingID = @id";
-            cmd.Parameters.AddWithValue("@id", ltTrainID.Text);
-            using (var dr = cmd.ExecuteReader())
-            {
-                if (dr.HasRows)
+                cmd.Parameters.AddWithValue("@id", ltTrainID.Text);
+                using (var dr = cmd.ExecuteReader())
                 {
-                    if (dr.Read())
+                    if (dr.HasRows)
                     {
-                        imgFront.ImageUrl = "~/clientprogress/" + dr["ProgressPicFront"];
-                        lnkFront.NavigateUrl = "~/clientprogress/" + dr["ProgressPicFront"];
+                        if (dr.Read())
+                        {
+                            imgFront.ImageUrl = "~/clientprogress/" + dr["ProgressPicFront"];
+                            lnkFront.NavigateUrl = "~/clientprogress/" + dr["ProgressPicFront"];
 
-                        imgSide.ImageUrl = "~/clientprogress/" + dr["ProgressPicSide"];
-                        lnkSide.NavigateUrl = "~/clientprogress/" + dr["ProgressPicSide"];
+                            imgSide.ImageUrl = "~/clientprogress/" + dr["ProgressPicSide"];
+                            lnkSide.NavigateUrl = "~/clientprogress/" + dr["ProgressPicSide"];
 
-                        imgBack.ImageUrl = "~/clientprogress/" + dr["ProgressPicBack"];
-                        lnkBack.NavigateUrl = "~/clientprogress/" + dr["ProgressPicBack"];
+                            imgBack.ImageUrl = "~/clientprogress/" + dr["ProgressPicBack"];
+                            lnkBack.NavigateUrl = "~/clientprogress/" + dr["ProgressPicBack"];
 
-                        txtAge2.Text = dr["Age"].ToString();
-                        txtWght2.Text = dr["Weight"].ToString();
-                        txtHght2.Text = dr["Height"].ToString();
-                        txtArms2.Text = dr["Arms"].ToString();
-                        txtChst2.Text = dr["Chest"].ToString();
-                        txtWst2.Text = dr["Waist"].ToString();
-                        txtHip2.Text = dr["Hip"].ToString();
-                        txtThgh2.Text = dr["Thigh"].ToString();
-                        txtLgs2.Text = dr["Legs"].ToString();
-                        txtGoal.Text = dr["GoalSetting"].ToString();
-                        txtPackage.Text = dr["TrainingPackage"].ToString();
-                        txtCoachFee2.Text = decimal.Parse(dr["TrainingFee"].ToString()).ToString("c");
+                            txtAge2.Text = dr["Age"].ToString();
+                            txtWght2.Text = dr["Weight"].ToString();
+                            txtHght2.Text = dr["Height"].ToString();
+                            txtArms2.Text = dr["Arms"].ToString();
+                            txtChst2.Text = dr["Chest"].ToString();
+                            txtWst2.Text = dr["Waist"].ToString();
+                            txtHip2.Text = dr["Hip"].ToString();
+                            txtThgh2.Text = dr["Thigh"].ToString();
+                            txtLgs2.Text = dr["Legs"].ToString();
+                            txtGoal.Text = dr["GoalSetting"].ToString();
+                            txtPackage.Text = dr["TrainingPackage"].ToString();
+                            txtCoachFee2.Text = decimal.Parse(dr["TrainingFee"].ToString()).ToString("c");
 
-                        DateTime dAdded = DateTime.Parse(dr["DateAdded"].ToString());
-                        txtTOR.Text = dAdded.ToString("MMMM dd, yyyy");
+                            DateTime dAdded = DateTime.Parse(dr["DateAdded"].ToString());
+                            txtTOR.Text = dAdded.ToString("MMMM dd, yyyy");
 
-                        chkMon2.Checked = dr["Monday"].ToString() == "1" ? true : false;
-                        chkTue2.Checked = dr["Tuesday"].ToString() == "1" ? true : false;
-                        chkWed2.Checked = dr["Wednesday"].ToString() == "1" ? true : false;
-                        chkThu2.Checked = dr["Thursday"].ToString() == "1" ? true : false;
-                        chkFri2.Checked = dr["Friday"].ToString() == "1" ? true : false;
-                        chkSat2.Checked = dr["Saturday"].ToString() == "1" ? true : false;
+                            chkMon2.Checked = dr["Monday"].ToString() == "1" ? true : false;
+                            chkTue2.Checked = dr["Tuesday"].ToString() == "1" ? true : false;
+                            chkWed2.Checked = dr["Wednesday"].ToString() == "1" ? true : false;
+                            chkThu2.Checked = dr["Thursday"].ToString() == "1" ? true : false;
+                            chkFri2.Checked = dr["Friday"].ToString() == "1" ? true : false;
+                            chkSat2.Checked = dr["Saturday"].ToString() == "1" ? true : false;
+                        }
                     }
                 }
+
+                ScriptManager.RegisterStartupScript(Page, Page.GetType(),
+                    "coachingDetails", "$('#coachingDetails').modal();", true);
+            }
+            else
+            {
+                cmd.CommandText = @"DELETE FROM Training WHERE
+                                    TrainingID = @id";
+                cmd.Parameters.AddWithValue("@id", ltTrainID.Text);
+                cmd.ExecuteNonQuery();
+
+                GetCoachingHist();
             }
         }
 
-
-        ScriptManager.RegisterStartupScript(Page, Page.GetType(), 
-            "coachingDetails", "$('#coachingDetails').modal();", true);
     }
 }

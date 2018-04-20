@@ -110,6 +110,10 @@
                                                             class="btn btn-sm btn-primary" runat="server" Text='View Coaching Details'
                                                             OnSubmitBehavior="false"
                                                             formnovalidate />
+                                                        <asp:Button ID="btnRemoveRec" CommandName="delrec"
+                                                            class="btn btn-sm btn-danger" runat="server" Text='Remove Record'
+                                                            OnSubmitBehavior="false"
+                                                            OnClientClick='return confirm("Are you sure?");' formnovalidate />
                                                     </td>
                                                 </tr>
                                             </ItemTemplate>

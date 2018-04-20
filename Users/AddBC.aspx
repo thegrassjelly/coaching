@@ -287,7 +287,8 @@
                                 <div class="col-12 col-md-9">
                                     <asp:TextBox ID="txtHght" class="form-control"
                                                  Placeholder="Height"
-                                                 TextMode="Number" runat="server"  />
+                                                 TextMode="Number" 
+                                                 step="any" runat="server"  />
                                 </div>
                             </div>
                             <div class="row form-group">
@@ -297,7 +298,8 @@
                                 <div class="col-12 col-md-9">
                                     <asp:TextBox ID="txtWght" class="form-control"
                                                  Placeholder="Weight"
-                                                 TextMode="Number" runat="server"  />
+                                                 TextMode="Number" 
+                                                 step="any" runat="server"  />
                                 </div>
                             </div>
                             <div class="row form-group">
@@ -307,7 +309,8 @@
                                 <div class="col-12 col-md-9">
                                     <asp:TextBox ID="txtCWght" class="form-control"
                                                  Placeholder="Clothes Weight"
-                                                 TextMode="Number" runat="server"  />
+                                                 TextMode="Number" 
+                                                 step="any" runat="server"  />
                                 </div>
                             </div>
                         </div>
@@ -319,7 +322,8 @@
                                 <div class="col-12 col-md-9">
                                     <asp:TextBox ID="txtFatPer" class="form-control"
                                                  Placeholder="Fat Percentage"
-                                                 TextMode="Number" runat="server"  />
+                                                 TextMode="Number" 
+                                                 step="any" runat="server"  />
                                 </div>
                             </div>
                             <div class="row form-group">
@@ -329,7 +333,8 @@
                                 <div class="col-12 col-md-9">
                                     <asp:TextBox ID="txtFMass" class="form-control"
                                                  Placeholder="Fat Mass"
-                                                 TextMode="Number" runat="server"  />
+                                                 TextMode="Number" 
+                                                 step="any" runat="server"  />
                                 </div>
                             </div>
                             <div class="row form-group">
@@ -339,7 +344,8 @@
                                 <div class="col-12 col-md-9">
                                     <asp:TextBox ID="txtFFM" class="form-control"
                                                  Placeholder="FFM"
-                                                 TextMode="Number" runat="server"  />
+                                                 TextMode="Number" 
+                                                 step="any" runat="server"  />
                                 </div>
                             </div>
                             <div class="row form-group">
@@ -349,7 +355,8 @@
                                 <div class="col-12 col-md-9">
                                     <asp:TextBox ID="txtMMass" class="form-control"
                                                  Placeholder="Muscle Mass"
-                                                 TextMode="Number" runat="server" />
+                                                 TextMode="Number" 
+                                                 step="any" runat="server" />
                                 </div>
                             </div>
                             <div class="row form-group">
@@ -359,7 +366,8 @@
                                 <div class="col-12 col-md-9">
                                     <asp:TextBox ID="txtTBW" class="form-control"
                                                  Placeholder="Total Body Weight"
-                                                 TextMode="Number" runat="server"  />
+                                                 TextMode="Number" 
+                                                 step="any" runat="server"  />
                                 </div>
                             </div>
                             <div class="row form-group">
@@ -369,7 +377,8 @@
                                 <div class="col-12 col-md-9">
                                     <asp:TextBox ID="txtTBWPer" class="form-control"
                                                  Placeholder="TBW Percentage"
-                                                 TextMode="Number" runat="server"  />
+                                                 TextMode="Number" 
+                                                 step="any" runat="server"  />
                                 </div>
                             </div>
                             <div class="row form-group">
@@ -379,7 +388,8 @@
                                 <div class="col-12 col-md-9">
                                     <asp:TextBox ID="txtBMass" class="form-control"
                                                  Placeholder="Bone Mass"
-                                                 TextMode="Number" runat="server"  />
+                                                 TextMode="Number" 
+                                                 step="any" runat="server"  />
                                 </div>
                             </div>
                             <div class="row form-group">
@@ -389,7 +399,8 @@
                                 <div class="col-12 col-md-9">
                                     <asp:TextBox ID="txtBMR" class="form-control"
                                                  Placeholder="Basal Metabolic Rate"
-                                                 TextMode="Number" runat="server"  />
+                                                 TextMode="Number" 
+                                                 step="any" runat="server"  />
                                 </div>
                             </div>
                             <div class="row form-group">
@@ -399,7 +410,8 @@
                                 <div class="col-12 col-md-9">
                                     <asp:TextBox ID="txtMAge" class="form-control"
                                                  Placeholder="Metabolic Age"
-                                                 TextMode="Number" runat="server"  />
+                                                 TextMode="Number"
+                                                 step="any" runat="server"  />
                                 </div>
                             </div>
                             <div class="row form-group">
@@ -409,7 +421,8 @@
                                 <div class="col-12 col-md-9">
                                     <asp:TextBox ID="txtVFR" class="form-control"
                                                  Placeholder="Viceral Fat Rating"
-                                                 TextMode="Number" runat="server"  />
+                                                 TextMode="Number" 
+                                                 step="any" runat="server"  />
                                 </div>
                             </div>
                             <div class="row form-group">
@@ -419,7 +432,8 @@
                                 <div class="col-12 col-md-9">
                                     <asp:TextBox ID="txtBMI" class="form-control"
                                                  Placeholder="Body Mass Index"
-                                                 TextMode="Number" runat="server"  />
+                                                 TextMode="Number" 
+                                                 step="any" runat="server"  />
                                 </div>
                             </div>
                         </div>
