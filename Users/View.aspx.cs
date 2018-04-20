@@ -65,4 +65,22 @@ public partial class Users_View : System.Web.UI.Page
     {
         GetUsers(txtSearch.Text);
     }
+
+    protected void lvUsers_OnItemCommand(object sender, ListViewCommandEventArgs e)
+    {
+        Literal ltUserID = (Literal)e.Item.FindControl("ltUserID");
+
+        using (var con = new SqlConnection(Helper.GetCon()))
+        using (var cmd = new SqlCommand())
+        {
+            con.Open();
+            cmd.Connection = con;
+            cmd.CommandText = @"DELETE FROM Clients
+                                WHERE UserID = @id";
+            cmd.Parameters.AddWithValue("@id", ltUserID.Text);
+            cmd.ExecuteNonQuery();
+        }
+
+        GetUsers(txtSearch.Text);
+    }
 }

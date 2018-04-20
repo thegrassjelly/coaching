@@ -53,7 +53,8 @@
                                     <tbody>
                                         <asp:ListView ID="lvUsers" runat="server"
                                             OnPagePropertiesChanging="lvUsers_OnPagePropertiesChanging"
-                                            OnDataBound="lvUsers_OnDataBound">
+                                            OnDataBound="lvUsers_OnDataBound"
+                                            OnItemCommand="lvUsers_OnItemCommand" >
                                             <ItemTemplate>
                                                 <tr>
                                                     <td>
@@ -62,6 +63,7 @@
                                                                  class="img-responsive" width="200" />
                                                         </a>
                                                     </td>
+                                                    <asp:Literal ID="ltUserID" runat="server" Text='<%# Eval("UserID") %>' Visible="false" />
                                                     <td><%# Eval("LastName") %>, <%# Eval("FirstName") %> </td>
                                                     <td><%# Eval("MobileNo") %></td>
                                                     <td><%# Eval("Birthday", "{0: MMMM d, yyyy}") %></td>
@@ -74,8 +76,12 @@
                                                     <td><%# Eval("DateModified", "{0: dddd, MMMM d, yyyy}") %></td>
                                                     <td>
                                                         <a href='UpdateUsers.aspx?ID=<%# Eval("UserID") %>'>
-                                                            <button type="button" class="btn btn-primary">Update Details</button>
+                                                            <button type="button" class="btn btn-sm btn-primary">Update Details</button>
                                                         </a>
+                                                        <asp:Button ID="btnRemoveUser" CommandName="deluser"
+                                                                    class="btn btn-sm btn-danger" runat="server" Text='Remove Client'
+                                                                    OnSubmitBehavior="false" 
+                                                                    OnClientClick='return confirm("Are you sure?");' formnovalidate />
                                                     </td>
                                                 </tr>
                                             </ItemTemplate>
