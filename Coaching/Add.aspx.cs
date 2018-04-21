@@ -112,10 +112,11 @@ public partial class Coaching_Add : System.Web.UI.Page
             cmd.CommandText = @"INSERT INTO TrainingDetails
                               (TrainingID, ProgressPicFront, ProgressPicSide, ProgressPicBack, 
                                 Age, Height, Weight, Arms, Chest, Waist,
-                               Hip, Thigh, Legs, Monday, Tuesday, Wednesday,
+                               Hip, Legs, Monday, Tuesday, Wednesday,
                                Thursday, Friday, Saturday, DateAdded) VALUES
-                              (@tid, @progfrnt, @progside, @progback, @age, @hght, @wght, @arms, @chst, @wst, @hip,
-                               @thgh, @lgs, @mon, @tue, @wed, @thu, @fri, @sat, @dadd)";
+                              (@tid, @progfrnt, @progside, @progback, @age, @hght,
+                                @wght, @arms, @chst, @wst, @hip,
+                                @lgs, @mon, @tue, @wed, @thu, @fri, @sat, @dadd)";
             cmd.Parameters.AddWithValue("@tid", trainID);
 
             if (!fileFront.HasFile)
@@ -161,7 +162,7 @@ public partial class Coaching_Add : System.Web.UI.Page
             cmd.Parameters.AddWithValue("@chst", txtChst.Text);
             cmd.Parameters.AddWithValue("@wst", txtWst.Text);
             cmd.Parameters.AddWithValue("@hip", txtHip.Text);
-            cmd.Parameters.AddWithValue("@thgh", txtThgh.Text);
+            //cmd.Parameters.AddWithValue("@thgh", txtThgh.Text);
             cmd.Parameters.AddWithValue("@lgs", txtLgs.Text);
 
             cmd.Parameters.AddWithValue("@mon", chkMon.Checked);
@@ -226,7 +227,7 @@ public partial class Coaching_Add : System.Web.UI.Page
             {
                 cmd.CommandText = @"SELECT ProgressPicFront, ProgressPicSide, ProgressPicBack,
                                 Age, Weight, Height, Arms,
-                                Chest, Waist, Hip, Thigh, Legs, GoalSetting,
+                                Chest, Waist, Hip, Legs, GoalSetting,
                                 TrainingPackage, TrainingFee, TrainingDetails.DateAdded,        
                                 Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
                                 FROM Training
@@ -256,7 +257,7 @@ public partial class Coaching_Add : System.Web.UI.Page
                             txtChst2.Text = dr["Chest"].ToString();
                             txtWst2.Text = dr["Waist"].ToString();
                             txtHip2.Text = dr["Hip"].ToString();
-                            txtThgh2.Text = dr["Thigh"].ToString();
+                            //txtThgh2.Text = dr["Thigh"].ToString();
                             txtLgs2.Text = dr["Legs"].ToString();
                             txtGoal.Text = dr["GoalSetting"].ToString();
                             txtPackage.Text = dr["TrainingPackage"].ToString();

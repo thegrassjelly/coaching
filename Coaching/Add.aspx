@@ -350,7 +350,7 @@
                                             TextMode="Number" runat="server" />
                                     </div>
                                 </div>
-                                <div class="row form-group">
+<%--                                <div class="row form-group">
                                     <div class="col col-md-3">
                                         <label class="form-control-label">Thigh</label>
                                     </div>
@@ -359,7 +359,7 @@
                                             Placeholder="Thigh (in cm)"
                                             TextMode="Number" runat="server" />
                                     </div>
-                                </div>
+                                </div>--%>
                                 <div class="row form-group">
                                     <div class="col col-md-3">
                                         <label class="form-control-label">Legs</label>
@@ -407,6 +407,7 @@
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <asp:TextBox ID="txtCoachFee" class="form-control"
+                                            Text="0"
                                             TextMode="number" runat="server" />
                                     </div>
                                 </div>
@@ -597,7 +598,7 @@
                                                     runat="server" disabled />
                                             </div>
                                         </div>
-                                        <div class="row form-group">
+<%--                                        <div class="row form-group">
                                             <div class="col col-md-3">
                                                 <label class="form-control-label">Thigh</label>
                                             </div>
@@ -605,7 +606,7 @@
                                                 <asp:TextBox ID="txtThgh2" class="form-control"
                                                     runat="server" disabled />
                                             </div>
-                                        </div>
+                                        </div>--%>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
                                                 <label class="form-control-label">Legs</label>
