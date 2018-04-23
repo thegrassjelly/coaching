@@ -75,6 +75,9 @@
                                                     <td><%# Eval("DateAdded", "{0: dddd, MMMM d, yyyy}") %></td>
                                                     <td><%# Eval("DateModified", "{0: dddd, MMMM d, yyyy}") %></td>
                                                     <td>
+                                                        <a href='ClientSummary.aspx?ID=<%# Eval("UserID") %>'>
+                                                            <button type="button" class="btn btn-sm btn-success">Summary</button>
+                                                        </a>
                                                         <a href='UpdateUsers.aspx?ID=<%# Eval("UserID") %>'>
                                                             <button type="button" class="btn btn-sm btn-primary">Update Details</button>
                                                         </a>

@@ -95,11 +95,9 @@
                                                     <asp:Literal ID="ltBCID" runat="server" Text='<%# Eval("BCID") %>' Visible="false" />
                                                     <td>
                                                         <asp:Button ID="btnBodyComp" CommandName="details"
-                                                            class="btn btn-sm btn-primary" runat="server" Text='Details'
+                                                            class="btn btn-sm btn-primary" runat="server" Text='Body Comp Details'
                                                             OnSubmitBehavior="false"
                                                             formnovalidate />
-                                                    </td>
-                                                    <td>
                                                         <asp:Button ID="btnDelRecord" CommandName="delitem"
                                                                     class="btn btn-sm btn-danger" runat="server" Text='Delete Record'
                                                                     OnSubmitBehavior="false" OnClientClick='return confirm("Are you sure?");'
