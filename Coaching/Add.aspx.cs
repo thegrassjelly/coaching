@@ -12,7 +12,7 @@ public partial class Coaching_Add : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        Helper.ValidateAdmin();
     }
 
     [WebMethod]

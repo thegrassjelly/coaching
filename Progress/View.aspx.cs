@@ -11,6 +11,8 @@ public partial class Progress_View : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Helper.ValidateAdmin();
+
         if (!IsPostBack)
         {
             GetGoals();

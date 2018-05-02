@@ -7,6 +7,8 @@ public partial class Users_View : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Helper.ValidateAdmin();
+
         if (!IsPostBack)
         {
             GetUsers(txtSearch.Text);

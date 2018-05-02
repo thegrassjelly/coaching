@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 
 /// <summary>
@@ -15,6 +16,24 @@ public class Helper
 		// TODO: Add constructor logic here
 		//
 	}
+
+    public static string CreateSHAHash(string Phrase)
+    {
+        SHA512Managed HashTool = new SHA512Managed();
+        Byte[] PhraseAsByte = System.Text.Encoding.UTF8.GetBytes(string.Concat(Phrase));
+        Byte[] EncryptedBytes = HashTool.ComputeHash(PhraseAsByte);
+        HashTool.Clear();
+        return Convert.ToBase64String(EncryptedBytes);
+    }
+
+    public static void ValidateAdmin()
+    {
+        //user not logged in
+        if (HttpContext.Current.Session["userid"] == null)
+        {
+            HttpContext.Current.Response.Redirect("Login.aspx");
+        }
+    }
 
     public static DateTime PHTime()
     {

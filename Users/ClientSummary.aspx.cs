@@ -11,6 +11,8 @@ public partial class Users_ClientSummary : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        Helper.ValidateAdmin();
+
         int userID = 0;
         bool validUser = int.TryParse(Request.QueryString["ID"], out userID);
 

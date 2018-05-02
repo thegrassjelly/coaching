@@ -11,7 +11,7 @@ public partial class Users_Add : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        Helper.ValidateAdmin();
     }
 
     protected void btnSubmit_OnClick(object sender, EventArgs e)

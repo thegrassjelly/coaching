@@ -15,7 +15,7 @@ public partial class Coaching_AddWorkout : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        Helper.ValidateAdmin();
     }
 
     [WebMethod]
